@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Title</title>
+{% endblock %}
+{% block content %}
+ <table class="mt-5 m-auto border border-3 p-3 col-8 text-center">
+     <thead class="p-3 bg-dark text-white">
+        <tr>
+            <th>ID</th>
+            <th>STORE</th>
+            <th>ITEMS</th>
+            <th>QUANTITY</th>
+            <th>PRICE</th>
+            <th>MODE</th>
+            <th colspan="2">ACTION</th>
+        </tr>
+
+     </thead>
+     <tbody>
+            {% for grossary in grossarys %}
+                <tr>
+                    <td>{{ grossary.id }}</td>
+                    <td>{{ grossary.store }}</td>
+                    <td>{{ grossary.item }}</td>
+                    <td>{{ grossary.quantity }}</td>
+                    <td>{{ grossary.price }}</td>
+                    <td>{{ grossary.pay_mode }}</td>
+                    <td>
+                        <a href="{% url 'update_url' grossary.id %}">
+                            <button><i class="bi bi-pencil-square"></i>&nbspUpdate</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'cancel_url' grossary.id %}">
+                                    <button><i class="bi bi-pencil-square"></i>&nbspCnacel</button>
+                        </a>
+                    </td>
+                {% endfor %}
+            </tr>
+     </tbody>
+ </table>
+{% endblock %}
+
